@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# My Budget App 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is simple budget app to track your living expenses. 
 
-## Available Scripts
+## Demo 
 
-In the project directory, you can run:
+:cherry_blossom: Main page  
+![main](https://user-images.githubusercontent.com/66394413/95319388-c408d680-08d2-11eb-93ad-d73e2669ced0.png)
 
-### `npm start`
+:cherry_blossom: SignIn page  
+![Page-Signin](https://user-images.githubusercontent.com/66394413/94089007-eae3f900-fe4c-11ea-8550-58f0e6f4f4cb.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+:cherry_blossom: SignUp page  
+![Page-Signup](https://user-images.githubusercontent.com/66394413/94088812-5c6f7780-fe4c-11ea-86df-dc3eeeac43b7.png) 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+:cherry_blossom: Movie   
+*Sorry for the low image quality  
+![GIF](https://user-images.githubusercontent.com/66394413/95322205-1a781400-08d7-11eb-9af2-c7aaa0d15d74.gif)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features 
+- SignIn/SignUp
+- Save and get your original data using Firebase
+- calculated % of expenses based on the total income
+- Monthly data (currently I'm trying to implement)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requirements
+- node 14.8.0
+- React 16.13.1
+- firebase 8.9.0
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
+- React `npx create-react-app my-app cd my-app`  
+- Firebase `npm install -g firebase-tools`
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Deployment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- To view it in the Local browser  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`npm start`  
+→ Open [http://localhost:3000](http://localhost:3000)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- To deploy in public  
 
-## Learn More
+`firebase init` 
+→　chooase FireStore, Functions, Hosting  
+`firebase login`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Note**  
+choose `build` for public direcory as initial setting was `public`  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`npm run build`  
 
-### Code Splitting
+`firebase deploy`  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Author
+Kana
 
-### Analyzing the Bundle Size
+## License
+MIT
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
