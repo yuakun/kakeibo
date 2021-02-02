@@ -72,14 +72,26 @@ function Home () {
       setIncomeItems(incomeItems);
     })
     */
+    axios.get('http://127.0.0.1:8080/getIncome')
+    .then(response => {
+      if (response.status != 200) {
+        throw new Error('レスポンスエラー')
+      } else {
+        var resultProducts = response.data
+        const incomeItems = []
+        for(var ii in resultProducts){
+          incomeItems.push({text: resultProducts[ii].ProductName, amount: parseInt(resultProducts[ii].Amount) })
+        }
+
+        setIncomeItems(incomeItems);
+      }
+    })
   }
 
   const addIncome = (text, amount) => {
    // 商品情報を登録する
     // サーバへ送信するパラメータ
     const params = new URLSearchParams();
-    //params.append('productName', this.productName)
-    //params.append('productMemo', this.productMemo)
     const docId = Math.random().toString(32).substring(2);
     //const date = new Date();
     params.append('ID', docId)
@@ -87,50 +99,27 @@ function Home () {
     params.append('Amount', amount)
     //params.append('Date', date)
 
-    //axios.post('/addProduct', params)
-    //axios.post('http://127.0.0.1:8080/shoppingapp/addProduct', params)
-    //axios.get('localhost:8080',{withCredentials: true})
     axios.post('http://127.0.0.1:8080/addProduct', params)
     .then(response => {
       setIncomeItems([
-        //...incomeItems, {text: inputText, amount: inputAmount, docId: docId , date: date}
         ...incomeItems, {text: inputText, amount: inputAmount, docId: docId }
       ]); 
     })
-    /*
-    .then(response => {
-        if (response.status != 200) {
-            throw new Error('レスポンスエラー')
-        } else {
-            // 商品情報を取得する
-//            this.doFetchAllProducts()
 
-            // 入力値を初期化する
-//            this.initInputValue()
-        }
-    })
-    */
     axios.defaults.withCredentials = true;
-    /*
-    const docId = Math.random().toString(32).substring(2);
-    const date = firebase.firestore.Timestamp.now();
-    db.collection('incomeItems').doc(docId).set({
-      uid: currentUser.uid,
-      text,
-      amount,
-      date,
-    })
-    .then(response => {
-      setIncomeItems([
-        ...incomeItems, {text: inputText, amount: inputAmount, docId: docId , date: date}
-      ]); 
-    })
-    */
   }
   
   const deleteIncome = (docId) => {
-    db.collection('incomeItems').doc(docId).delete()
+    //db.collection('incomeItems').doc(docId).delete()
+    const params = new URLSearchParams();
+    params.append('ID', docId)
+
+    axios.post('http://127.0.0.1:8080/delete', params)
+    .then(response => {
+      getIncomeData()
+    })
   }
+  
 
   //firebase Expense data
   const getExpenseData = () => {
@@ -142,6 +131,20 @@ function Home () {
       setExpenseItems(expenseItems);
     })
     */
+    axios.get('http://127.0.0.1:8080/getExpense')
+    .then(response => {
+      if (response.status != 200) {
+        throw new Error('レスポンスエラー')
+      } else {
+        var resultProducts = response.data
+        const expenseItems = []
+        for(var ii in resultProducts){
+          expenseItems.push({text: resultProducts[ii].ProductName, amount: parseInt(resultProducts[ii].Amount) })
+        }
+
+        setExpenseItems(expenseItems);
+      }
+    })
   }
 
   const addExpense = (text, amount) => {
@@ -159,21 +162,6 @@ function Home () {
         ...expenseItems, {text: inputText, amount: inputAmount, docId: docId }
       ]); 
     })
-    /*
-    const docId = Math.random().toString(32).substring(2);
-    const date = firebase.firestore.Timestamp.now();
-    db.collection('expenseItems').doc(docId).set({
-      uid: currentUser.uid,
-      text,
-      amount,
-      date,
-    })
-    .then(response => {
-      setExpenseItems([
-        ...expenseItems, {text: inputText, amount:inputAmount, docId: docId, date: date}
-      ]); 
-    })
-    */
   }
 
   const deleteExpense = (docId) => {
